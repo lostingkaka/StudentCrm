@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <!-- 用户配置 -->
+    <package name="user" namespace="/user" extends="common">
+        <action name="userAction_*" class="cn.itcast.crm.action.UserAction" method="{1}">
+            <!-- 1.1 登录成功，  重定向到首页-->
+            <result name="login" type="redirectAction">
+                <param name="namespace">/</param>
+                <param name="actionName">homeAction</param>
+            </result>
+            <!-- 1.2 配置input，表示登录不成功，返回登录页面 -->
+            <result name="input">/WEB-INF/pages/login.jsp</result>
+        </action>
+    </package>
+</struts>

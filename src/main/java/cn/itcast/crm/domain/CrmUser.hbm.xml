@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.itcast.crm.domain.CrmUser" table="crm_user">
+        <id name="userId" type="java.lang.String">
+            <column name="userID" length="50"/>
+            <generator class="uuid"/>
+        </id>
+        <property name="logonName" type="java.lang.String">
+            <column name="logonName" length="100"/>
+        </property>
+        <property name="logonPwd" type="java.lang.String">
+            <column name="logonPwd" length="100"/>
+        </property>
+        <property name="userName" type="java.lang.String">
+            <column name="userName" length="100"/>
+        </property>
+        <property name="gender" type="java.lang.String">
+            <column name="gender" length="20"/>
+        </property>
+        <property name="onDutyDate" type="java.sql.Timestamp">
+            <column name="onDutyDate" length="19"/>
+        </property>
+        <!-- 与职务表多对一关系的配置信息 -->
+        <many-to-one name="crmPost"
+                     class="cn.itcast.crm.domain.CrmPost" fetch="select">
+            <column name="postID" length="50"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.itcast.crm.domain.CrmDepartment" table="crm_department">
+        <id name="depId" type="java.lang.String">
+            <column name="depID" length="50"/>
+            <generator class="uuid"/>
+        </id>
+        <property name="depName" type="java.lang.String">
+            <column name="depName" length="50"/>
+        </property>
+        <!-- 部门和职位一对多的关系 -->
+        <set name="crmPosts" inverse="true">
+            <key>
+                <column name="depID" length="50"/>
+            </key>
+            <one-to-many class="cn.itcast.crm.domain.CrmPost"/>
+        </set>
+    </class>
+</hibernate-mapping>

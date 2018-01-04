@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <!-- 1.常量 -->
+    <constant name="struts.devMode" value="true"></constant>
+    <constant name="struts.ui.theme" value="simple"></constant>
+    <!-- 2.公用package -->
+    <package name="common" namespace="/" extends="struts-default">
+        <!-- 全局结果集 -->
+        <global-results>
+            <!--  没有登录 -->
+            <result name="nonLogin">/WEB-INF/pages/login.jsp</result>
+        </global-results>
+        <!-- 显示 WEB-INF下的jsp页面
+        * 例如：uiAction_user_inClass，user表示的是目录名，inClass吧表示的是jsp文件名
+         -->
+        <!-- 公用action -->
+        <action name="uiAction_*_*">
+            <result>/WEB-INF/pages/{1}/{2}.jsp</result>
+        </action>
+        <!-- 重定向到首页 -->
+        <action name="homeAction">
+            <result>/WEB-INF/pages/frame.jsp</result>
+        </action>
+
+        <!--#2 配置拦截器 -->
+        <interceptors>
+            <!-- #2.1 注册拦截器 -->
+            <interceptor name="loginInterceptor"
+                         class="cn.itcast.crm.action.LoginInterceptor"/>
+            <!-- #2.2 引用已经注册的拦截器，形成自定义拦截器栈
+                * 注意：自定义拦截器栈，将覆盖到默认栈 ，必须手动再自定义拦截器栈中 引用默认栈
+            -->
+            <interceptor-stack name="loginStack">
+                <!-- #2.2.1 引用默认 -->
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+                <!-- #2.2.2 引用自定义拦截器-->
+                <interceptor-ref name="loginInterceptor"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <!-- #2.3 修改当前<package>默认栈，此时 package下的所有的action都将使用此栈 -->
+        <default-interceptor-ref name="loginStack"></default-interceptor-ref>
+
+    </package>
+    <!-- 3.引入其他的子模块 -->
+    <include file="struts/struts-user.xml"></include>
+</struts>

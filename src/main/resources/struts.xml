@@ -9,22 +9,6 @@
     <constant name="struts.ui.theme" value="simple"></constant>
     <!-- 2.公用package -->
     <package name="common" namespace="/" extends="struts-default">
-        <!-- 全局结果集 -->
-        <global-results>
-            <!--  没有登录 -->
-            <result name="nonLogin">/WEB-INF/pages/login.jsp</result>
-        </global-results>
-        <!-- 显示 WEB-INF下的jsp页面
-        * 例如：uiAction_user_inClass，user表示的是目录名，inClass吧表示的是jsp文件名
-         -->
-        <!-- 公用action -->
-        <action name="uiAction_*_*">
-            <result>/WEB-INF/pages/{1}/{2}.jsp</result>
-        </action>
-        <!-- 重定向到首页 -->
-        <action name="homeAction">
-            <result>/WEB-INF/pages/frame.jsp</result>
-        </action>
 
         <!--#2 配置拦截器 -->
         <interceptors>
@@ -41,9 +25,35 @@
                 <interceptor-ref name="loginInterceptor"></interceptor-ref>
             </interceptor-stack>
         </interceptors>
+
         <!-- #2.3 修改当前<package>默认栈，此时 package下的所有的action都将使用此栈 -->
         <default-interceptor-ref name="loginStack"></default-interceptor-ref>
 
+        <!-- 通配默认action -->
+        <default-action-ref name="index"></default-action-ref>
+
+        <!-- 全局结果集 -->
+        <global-results>
+            <!--  没有登录 -->
+            <result name="nonLogin">/WEB-INF/pages/login.jsp</result>
+        </global-results>
+
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+        <!-- 显示 WEB-INF下的jsp页面
+        * 例如：uiAction_user_inClass，user表示的是目录名，inClass吧表示的是jsp文件名
+         -->
+        <!-- 公用action -->
+        <action name="uiAction_*_*">
+            <result>/WEB-INF/pages/{1}/{2}.jsp</result>
+        </action>
+        <!-- 重定向到首页 -->
+        <action name="homeAction">
+            <result>/WEB-INF/pages/frame.jsp</result>
+        </action>
+
+        <action name="index">
+            <result>/index.jsp</result>
+        </action>
     </package>
     <!-- 3.引入其他的子模块 -->
     <include file="struts/struts-user.xml"></include>

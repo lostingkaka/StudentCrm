@@ -30,7 +30,16 @@ public class UserAction extends ActionSupport implements ModelDriven<CrmUser> {
      * 登录
      */
     public String login() {
-        return "login";
+        //查询--校验账号与密码是否匹配，如果匹配存放session，如果不匹配，返回登录页提示
+        CrmUser loginCrmUser = crmUserService.login(crmUser);
+        if (loginCrmUser != null) {
+            //登录成功
+            ActionContext.getContext().getSession().put("CrmUser", loginCrmUser);
+            return "login";
+        }
+        //没有成功
+        this.addFieldError("logonName", "用户名或密码错误");
+        return "input";
     }
 
     /**
@@ -42,11 +51,11 @@ public class UserAction extends ActionSupport implements ModelDriven<CrmUser> {
         if (loginCrmUser != null) {
             //登录成功
             ActionContext.getContext().getSession()
-                    .put("loginCrmUser", loginCrmUser);
+                    .put("CrmUser", loginCrmUser);
             return;
         }
         //没有成功
-        this.addFieldError("userLogon", "用户名或密码错误");
+        this.addFieldError("logonName", "用户名或密码错误");
     }
 
     /**
@@ -57,4 +66,11 @@ public class UserAction extends ActionSupport implements ModelDriven<CrmUser> {
         return "login";
     }
 
+    public CrmUser getCrmUser() {
+        return crmUser;
+    }
+
+    public void setCrmUser(CrmUser crmUser) {
+        this.crmUser = crmUser;
+    }
 }

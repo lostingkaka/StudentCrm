@@ -51,10 +51,10 @@
             <td></td>
         </tr>
         <tr>
-            <td background="${pageContext.request.contextPath}/images/right.jpg" width="740" height="412"></td>
+            <td background="${pageContext.request.contextPath}/images/right.jpg" width="370" height="270"></td>
             <td class="login_msg" width="400">
                 <%-- /html/frame.html --%>
-                <s:form namespace="/" action="staffAction_login">
+                <s:form namespace="/user" action="userAction_login" method="POST">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath}/images/title.png" width="185" height="26"/>
                     <br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -63,8 +63,9 @@
                         <s:fielderror></s:fielderror>
                     </font>
                     <br/>
-                    用户名：<s:textfield cssClass="msg" name="loginName"></s:textfield> <br/><br/>
-                    密&nbsp;码：<s:password cssClass="msg" name="loginPwd" showPassword="true"></s:password> <br/><br/>
+                    用户名：<s:textfield cssClass="msg" name="logonName"></s:textfield> <br/><br/>
+                    密&nbsp;码：<s:password cssClass="msg" name="logonPwd" showPassword="true"></s:password>
+                    <br/><br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 

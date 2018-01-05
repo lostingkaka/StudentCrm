@@ -56,5 +56,5 @@
         </action>
     </package>
     <!-- 3.引入其他的子模块 -->
-    <include file="struts/struts-user.xml"></include>
+    <include file="config/struts/struts-user.xml"></include>
 </struts>

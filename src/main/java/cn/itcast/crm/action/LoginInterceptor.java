@@ -27,7 +27,7 @@ public class LoginInterceptor implements Interceptor {
             Object actionObj = invocation.getAction();
             if (actionObj instanceof ActionSupport) {
                 ActionSupport actionSupport = (ActionSupport) actionObj;
-                actionSupport.addFieldError("userLogon", "请登录");
+                actionSupport.addFieldError("logonName", "请登录");
             }
             /**显示友好 end*/
             return "nonLogin";

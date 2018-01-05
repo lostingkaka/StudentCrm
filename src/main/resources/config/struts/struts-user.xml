@@ -5,7 +5,7 @@
 <struts>
     <!-- 用户配置 -->
     <package name="user" namespace="/user" extends="common">
-        <action name="userAction_*" class="cn.itcast.crm.action.UserAction" method="{1}">
+        <action name="userAction_login" class="cn.itcast.crm.action.UserAction" method="{1}">
             <!-- 1.1 登录成功，  重定向到首页-->
             <result name="login" type="redirectAction">
                 <param name="namespace">/</param>

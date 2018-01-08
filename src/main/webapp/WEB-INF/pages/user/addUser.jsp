@@ -37,19 +37,19 @@
 </table>
 
 <%-- 重定向查询所有 /pages/staff/listStaff.jsp --%>
-<s:form namespace="/" action="staffAction_add">
+<s:form namespace="/" action="userAction_add">
 
     <table width="88%" border="0" class="emp_table" style="width:80%;">
 
         <tr>
             <td>登录名：</td>
-            <td><s:textfield name="loginName"></s:textfield></td>
+            <td><s:textfield name="logonName"></s:textfield></td>
             <td>密码：</td>
-            <td><s:password name="loginPwd"></s:password></td>
+            <td><s:password name="logonPwd"></s:password></td>
         </tr>
         <tr>
             <td>姓名：</td>
-            <td><s:textfield name="staffName"></s:textfield></td>
+            <td><s:textfield name="userName"></s:textfield></td>
             <td>性别：</td>
             <td>
                 <s:radio list="{'男','女'}" name="gender" value="'男'"></s:radio>

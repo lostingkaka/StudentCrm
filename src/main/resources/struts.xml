@@ -8,7 +8,7 @@
     <constant name="struts.devMode" value="true"></constant>
     <constant name="struts.ui.theme" value="simple"></constant>
     <!-- 2.公用package -->
-    <package name="common" namespace="/" extends="struts-default">
+    <package name="common" namespace="/" extends="json-default">
 
         <!--#2 配置拦截器 -->
         <interceptors>
@@ -57,4 +57,6 @@
     </package>
     <!-- 3.引入其他的子模块 -->
     <include file="config/struts/struts-user.xml"></include>
+    <include file="config/struts/struts-dept.xml"></include>
+    <include file="config/struts/struts-post.xml"></include>
 </struts>

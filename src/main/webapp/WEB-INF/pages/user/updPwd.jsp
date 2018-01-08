@@ -38,7 +38,7 @@
 
 <body class="updpwd">
 
-<s:form namespace="/" action="staffAction_updatePwd">
+<s:form namespace="/" action="userAction_updatePwd">
     <table style="width: 200px">
         <tr>
             <td colspan="2">
@@ -48,13 +48,13 @@
         <tr>
             <td>用户编号：</td>
             <td>
-                <s:textfield name="#session.loginStaff.staffId" readonly="true"/>
-                <s:hidden value="%{#session.loginStaff.staffId}" name="staffId"></s:hidden>
+                <s:textfield name="#session.loginUser.userfId" readonly="true"/>
+                <s:hidden value="%{#session.loginUser.userId}" name="userId"></s:hidden>
             </td>
         </tr>
         <tr>
             <td>新&nbsp;密&nbsp;码：</td>
-            <td><s:password name="loginPwd"></s:password></td>
+            <td><s:password name="logonPwd"></s:password></td>
         </tr>
         <tr>
             <td>确认密码：</td>

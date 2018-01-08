@@ -72,7 +72,8 @@
                     <s:submit cssClass="btn" value="登录"></s:submit>
 
                     <!--取消用户注册
-                    <input class="btn" type="button" value=" 注册 " onclick="document.location='${pageContext.request.contextPath}/html/staff/register.html'"/>
+                    <input class="btn" type="button" value=" 注册 "
+                    onclick="document.location='${pageContext.request.contextPath}/html/user/register.html'"/>
                     -->
 
                 </s:form>

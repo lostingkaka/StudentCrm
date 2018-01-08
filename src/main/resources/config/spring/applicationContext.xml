@@ -89,10 +89,9 @@
 
 
     <!-- 到入其他模块的配置文件 -->
-    <!--import resource="classpath:config/spring/applicationContext-staff.xml"/>
-    <import resource="classpath:config/spring/applicationContext-deparment.xml"/>
-    <import resource="classpath:config/spring/applicationContext-post.xml"/>
-    <import resource="classpath:config/spring/applicationContext-lessontype.xml"/>
+    <!--import resource="classpath:config/spring/applicationContext-lessontype.xml"/>
     <import resource="classpath:config/spring/applicationContext-class.xml"/-->
     <import resource="classpath:config/spring/applicationContext-user.xml"/>
+    <import resource="classpath:config/spring/applicationContext-department.xml"/>
+    <import resource="classpath:config/spring/applicationContext-post.xml"/>
 </beans>

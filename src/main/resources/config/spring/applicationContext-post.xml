@@ -13,15 +13,21 @@
        					   http://www.springframework.org/schema/tx 
        					   http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <!-- 子模块：职务 -->
+    <!-- dao -->
+    <bean id="postDao" class="cn.itcast.crm.dao.impl.CrmPostDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <!-- service -->
+    <bean id="crmPostService"
+          class="cn.itcast.crm.service.impl.CrmPostServiceImpl">
+        <property name="crmPostDao" ref="postDao"></property>
+    </bean>
+    <!-- action -->
+    <bean id="postAction" class="cn.itcast.crm.action.PostAction"
+          scope="prototype">
+        <property name="crmPostService" ref="crmPostService"></property>
+    </bean>
 
-	<bean id="postService"  class="cn.tf.post.service.impl.PostServiceImpl">
-		<property name="postDao" ref="postDao"></property>
-	</bean>
-	
-	<bean id="postDao"  class="cn.tf.post.dao.impl.PostDaoImpl">
-		<property name="sessionFactory"  ref="sessionFactory"></property>
-	</bean>
-	
-	
 
 </beans>

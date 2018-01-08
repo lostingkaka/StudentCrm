@@ -58,4 +58,13 @@ public class UserAction extends ActionSupport implements ModelDriven<CrmUser> {
         this.addFieldError("logonName", "用户名或密码错误");
     }
 
+    /**
+     * 注销重新登陆
+     */
+    public String logout(){
+        ActionContext.getContext().getSession().remove("loginCrmUser");
+        return "login";
+    }
+
+
 }

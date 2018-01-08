@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <!-- 配置职务的 -->
+    <package name="post" namespace="/post" extends="common">
+        <action name="postAction_*" class="cn.itcast.crm.action.PostAction" method="{1}">
+            <!--  查询所有 -->
+            <result name="findAll">/WEB-INF/pages/post/listPost.jsp</result>
+            <!--  添加或编辑前 -->
+            <result name="preAddOrEdit">
+                /WEB-INF/pages/post/addOrEditPost.jsp
+            </result>
+            <!--  添加或编辑后 -->
+            <result name="addOrEdit" type="redirectAction">
+                postAction_findAll
+            </result>
+            <result name="ajaxGetPostion" type="json">
+                <param name="root">allPost</param>
+                <param name="includeProperties">
+                    \[\d\]\.postId,
+                    \[\d\]\.postName
+                </param>
+            </result>
+
+        </action>
+    </package>
+</struts>

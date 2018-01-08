@@ -32,7 +32,7 @@
             <a href="javascript:void(0)" onclick="document.forms[0].submit()"><img
                     src="${pageContext.request.contextPath}/images/button/gaojichaxun.gif"/></a>
 
-            <s:a namespace="/" action="staffAction_addUI">
+            <s:a namespace="/" action="userAction_addUI">
                 <img src="${pageContext.request.contextPath}/images/button/tianjia.gif"/>
             </s:a>
 
@@ -42,7 +42,7 @@
 </table>
 
 <!-- 查询条件：马上查询 -->
-<s:form namespace="/" action="staffAction_findAll">
+<s:form namespace="/" action="userAction_findAll">
 
     <table width="88%" border="0" style="margin: 20px;">
         <tr>
@@ -67,7 +67,7 @@
 
             </td>
             <td width="80px">姓名：</td>
-            <td width="200px"><s:textfield name="staffName" size="12"></s:textfield></td>
+            <td width="200px"><s:textfield name="userName" size="12"></s:textfield></td>
             <td></td>
         </tr>
     </table>
@@ -90,16 +90,16 @@
         <td width="10%" align="center">编辑</td>
     </tr>
     <%-- 单行样式：tabtd1； 双行演样式：tabtd2 --%>
-    <s:iterator value="#allStaff" status="vs">
+    <s:iterator value="#allUser" status="vs">
         <tr class="<s:property value="#vs.odd ? 'tabtd1' : 'tabtd2'" />">
-            <td align="center"><s:property value="staffName"/></td>
+            <td align="center"><s:property value="userName"/></td>
             <td align="center"><s:property value="gender"/></td>
             <td align="center"><s:property value="onDutyDate"/></td>
             <td align="center"><s:property value="crmPost.crmDepartment.depName"/></td>
             <td align="center"><s:property value="crmPost.name"/></td>
             <td width="7%" align="center">
-                <s:a namespace="/" action="staffAction_EditUI">
-                    <s:param name="staffId" value="staffId"></s:param>
+                <s:a namespace="/" action="userAction_EditUI">
+                    <s:param name="userId" value="userId"></s:param>
                     <img src="${pageContext.request.contextPath}/images/button/modify.gif" class="img"/>
                 </s:a>
 

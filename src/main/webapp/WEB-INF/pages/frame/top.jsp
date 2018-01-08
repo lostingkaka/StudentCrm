@@ -10,7 +10,8 @@
     <base target="_self">
     <script>
         function modifypsw() {
-            var dw = window.showModalDialog('${pageContext.request.contextPath}/staffAction_updatePwdUI', '', 'dialogHeight:180px; dialogWidth:260px; dialogLeft:500px; dialogTop:220px;edge:sunken;center:yes;location:no;help:no;resizable:no;status:no;scroll:no');
+            var dw = window.showModalDialog('${pageContext.request.contextPath}/userAction_updatePwdUI', '',
+                    'dialogHeight:180px; dialogWidth:260px; dialogLeft:500px; dialogTop:220px;edge:sunken;center:yes;location:no;help:no;resizable:no;status:no;scroll:no');
         }
     </script>
 
@@ -34,7 +35,7 @@
                                 <tr>
                                     <td width="150" height="35"><p align="right"><font
                                             color="#FFFFFF">欢迎您：<b><s:property
-                                            value="#session.loginStaff.staffName"/></b></font></td>
+                                            value="#session.loginUser.userName"/></b></font></td>
                                 </tr>
                             </table>
                         </div>
@@ -105,7 +106,7 @@
                                                                                       src="${pageContext.request.contextPath}/images/login.gif">
                                                 </td>
                                                 <td width="55" valign="middle"><a
-                                                        href="${pageContext.request.contextPath}/staffAction_logout"
+                                                        href="${pageContext.request.contextPath}/userAction_logout"
                                                         target="_top"><font color="ffffff">重新登录</font></a></td>
                                             </tr>
                                         </table>

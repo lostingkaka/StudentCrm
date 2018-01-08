@@ -46,6 +46,32 @@
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+
+    <bean id="transinterceptor"
+          class="org.springframework.transaction.interceptor.TransactionInterceptor">
+        <property name="transactionManager" ref="transactionManager">
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="proxyCreator"
+          class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="beanNames">
+            <list>
+                <value>personDAl</value>
+            </list>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>transinterceptor</value>
+            </list>
+        </property>
+    </bean>
+
     <!-- 4.2 配置通知，描述事务详情 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
@@ -60,6 +86,7 @@
     <aop:config>
         <aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.tf.*.service..*.*(..))"/>
     </aop:config>
+
 
     <!-- 到入其他模块的配置文件 -->
     <!--import resource="classpath:config/spring/applicationContext-staff.xml"/>

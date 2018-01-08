@@ -1,0 +1,27 @@
+<class name="cn.itcast.crm.domain.CrmClass" table="crm_class">
+    <id name="classId" type="java.lang.String" length="50">
+        <generator class="uuid" />
+    </id>
+    <property name="name" length="50"></property>
+    <property name="beginTime" >
+        <column name="beginTime" sql-type="datetime" />
+    </property>
+    <property name="endTime" >
+        <column name="endTime"  sql-type="datetime"  />
+    </property>
+    <property name="status" length="20" ></property>
+    <property name="totalCount"></property>
+    <property name="upgradeCount"></property>
+    <property name="changeCount"></property>
+    <property name="runoffCount"></property>
+    <property name="remark" length="500"></property>
+    <!-- 与课程多对一的关系配置 -->
+    <many-to-one name="crmLessontype" column="lessontypeId"
+                 class="cn.itcast.crm.domain.CrmLessontype" />
+    <!--文件上传 -->
+    <property name="uploadPath" length="200"></property>
+    <property name="uploadFilename" length="100"></property>
+    <property name="uploadTime" >
+        <column name="uploadTime" sql-type="datetime" />
+    </property>
+</class>

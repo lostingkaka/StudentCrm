@@ -14,14 +14,14 @@
        					   http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
-    <bean id="crmDepartmentDao"
+    <bean id="DepartmentDao"
           class="cn.itcast.crm.dao.impl.CrmDepartmentDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     <!-- service -->
     <bean id="crmDepartmentService"
           class="cn.itcast.crm.service.impl.CrmDepartmentServiceImpl">
-        <property name="crmDepartmentDao" ref="crmDepartmentDao"/>
+        <property name="crmDepartmentDao" ref="DepartmentDao"/>
     </bean>
     <!-- action -->
     <bean id="departmentAction"

@@ -13,15 +13,16 @@
        					   http://www.springframework.org/schema/tx 
        					   http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <bean id="crmLessontypeDao" class="cn.itcast.crm.dao.impl.CrmLessontypeDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
 
-	<bean id="lessontypeService"  class="cn.tf.lessontype.service.impl.LessontypeServiceImpl">
-		<property name="lessontypeDao" ref="lessontypeDao"></property>
-	</bean>
-	
-	<bean id="lessontypeDao"  class="cn.tf.lessontype.dao.impl.LessontypeDaoImpl">
-		<property name="sessionFactory"  ref="sessionFactory"></property>
-	</bean>
-	
-	
+    <bean id="crmLessontypeService" class="cn.itcast.crm.service.impl.CrmLessontypeServiceImpl">
+        <property name="crmLessontypeDao" ref="crmLessontypeDao"></property>
+    </bean>
+    <bean id="lessontypeAction"
+          class="cn.itcast.crm.action.LessontypeAction" scope="prototype">
+        <property name="crmLessontypeService" ref="crmLessontypeService"/>
+    </bean>
 
 </beans>

@@ -14,14 +14,16 @@
        					   http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
-	<bean id="classesService"  class="cn.tf.classes.service.impl.ClassesServiceImpl">
-		<property name="classesDao" ref="classDao"></property>
-	</bean>
-	
-	<bean id="classDao"  class="cn.tf.classes.dao.impl.ClassesDaoImpl">
+	<bean id="crmClassDao"  class="cn.itcast.crm.dao.impl.CrmClassDaoImpl">
 		<property name="sessionFactory"  ref="sessionFactory"></property>
 	</bean>
-	
-	
+
+	<bean id="crmClassService"  class="cn.itcast.crm.service.impl.CrmClassServiceImpl">
+		<property name="crmClassDao" ref="crmClassDao"></property>
+	</bean>
+	<bean id="classAction"
+		  class="cn.itcast.crm.action.ClassAction" scope="prototype">
+		<property name="crmClassService" ref="crmClassService"/>
+	</bean>
 
 </beans>
